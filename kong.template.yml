@@ -1,0 +1,138 @@
+services:
+  # Existing services you already have
+  - name: user-svc
+    url: http://user-svc:8080
+    routes:
+      - name: user-api
+        paths:
+          - /api/user
+        methods:
+          - GET
+          - POST
+          - PUT
+          - DELETE
+        plugins:
+          - name: jwt
+          - name: rate-limiting
+            config:
+              minute: 100
+              policy: local
+
+  - name: learning-svc
+    url: http://learning-svc:8080
+    routes:
+      - name: learning-api
+        paths:
+          - /api/learning
+        methods:
+          - GET
+          - POST
+          - PUT
+          - DELETE
+        plugins:
+          - name: jwt
+          - name: rate-limiting
+            config:
+              minute: 100
+              policy: local
+
+  - name: artwork-query
+    url: http://artwork-query:8080
+    routes:
+      - name: artwork-query-api
+        paths:
+          - /api/artwork
+        methods:
+          - GET
+        plugins:
+          - name: jwt
+          - name: rate-limiting
+            config:
+              minute: 100
+              policy: local
+
+  - name: community-svc
+    url: http://community-svc:8080
+    routes:
+      - name: community-api
+        paths:
+          - /api/community
+        methods:
+          - GET
+          - POST
+        plugins:
+          - name: jwt
+          - name: rate-limiting
+            config:
+              minute: 100
+              policy: local
+
+  - name: gami-svc
+    url: http://gami-svc:8080
+    routes:
+      - name: gami-api
+        paths:
+          - /api/gami
+        methods:
+          - GET
+          - POST
+        plugins:
+          - name: jwt
+          - name: rate-limiting
+            config:
+              minute: 100
+              policy: local
+
+  - name: notify-svc
+    url: http://notify-svc:8080
+    routes:
+      - name: notify-api
+        paths:
+          - /api/notify
+        methods:
+          - GET
+          - POST
+          - PATCH
+          - DELETE
+        plugins:
+          - name: jwt
+          - name: rate-limiting
+            config:
+              minute: 100
+              policy: local
+
+  - name: storage-svc
+    url: http://storage-svc:8080
+    routes:
+      - name: storage-api
+        paths:
+          - /api/storage
+        methods:
+          - GET
+          - POST
+        plugins:
+          - name: jwt
+          - name: rate-limiting
+            config:
+              minute: 100
+              policy: local
+
+  - name: admin-svc
+    url: http://admin-svc:8080
+    routes:
+      - name: admin-api
+        paths:
+          - /api/admin
+        methods:
+          - GET
+          - POST
+          - PUT
+          - PATCH
+          - DELETE
+        plugins:
+          - name: jwt
+          - name: rate-limiting
+            config:
+              minute: 100
+              policy: local
+  
